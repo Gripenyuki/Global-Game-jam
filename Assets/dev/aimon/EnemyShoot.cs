@@ -6,7 +6,7 @@ public class EnemyShoot : MonoBehaviour
 {
     public Transform target;  // The player or target the enemy will shoot at
     public GameObject projectilePrefab;  // The projectile the enemy will shoot
-    private float shootingInterval = 0.1f;  // Time between shots
+    private float shootingInterval = 1f;  // Time between shots
     private float projectileSpeed = 5f;  // Speed of the projectile
     private float detectionRange = 10f;   // Range within which the enemy can detect the player
 

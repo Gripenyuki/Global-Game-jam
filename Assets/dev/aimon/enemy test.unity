@@ -156,9 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1690161731}
   projectilePrefab: {fileID: 862036200}
-  shootingInterval: 2
-  projectileSpeed: 5
-  detectionRange: 5
 --- !u!61 &80238324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -245,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80238322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43, y: -0.21, z: 0}
+  m_LocalPosition: {x: -2.15, y: 2.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -559,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862036200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 1.313, z: 0}
+  m_LocalPosition: {x: -11.48, y: 1.67, z: 0}
   m_LocalScale: {x: 0.4989, y: 0.5145, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -581,7 +578,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -619,10 +616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b3c01edd6ad5b49a3d9b2485bc9a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoints:
-  - {fileID: 1708821203}
-  - {fileID: 1778407108}
-  moveSpeed: 10
 --- !u!61 &1690161728
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -898,7 +891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778407106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.42, y: -3.1, z: 0}
+  m_LocalPosition: {x: 7.32, y: -2.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
