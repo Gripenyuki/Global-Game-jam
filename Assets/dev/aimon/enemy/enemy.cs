@@ -1,20 +1,29 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class enemy : MonoBehaviour
 {
     public Transform[] patrolPoints;  // Use an array for multiple patrol points
     public float moveSpeed = 2f;
     private bool walk;
+    private Rigidbody2D rb;
+    bool live = true;
+    private Animation eneA;
+    private SpriteRenderer enemysr;
 
     void Start()
     {
         StartCoroutine(Patrol());
+        rb = GetComponent<Rigidbody2D>();
+        eneA = GetComponent<Animation>();
+        enemysr = GetComponent<SpriteRenderer>();   
     }
 
-    void Update()
+    public void Getene()
     {
-        // Any additional update logic can be added here
+        live = false;
+        enemysr.color = Color.gray;
+        Manager.Die(live, gameObject, eneA, 0.5f, this);
     }
 
     IEnumerator Patrol()
@@ -33,6 +42,13 @@ public class Enemy : MonoBehaviour
                 // Wait for a short duration before moving to the next point
                 yield return new WaitForSeconds(2f);  // Adjust the duration as needed
             }
+        }
+    }
+    private void Update()
+    {
+        if (live == false)
+        {
+            rb.isKinematic = true;
         }
     }
 }
