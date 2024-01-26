@@ -1,29 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    public Transform patrolPoints;
-    public Transform patrolPoints1;
+    public Transform[] patrolPoints;  // Use an array for multiple patrol points
     public float moveSpeed = 2f;
+    private bool walk;
+
     void Start()
     {
-
+        StartCoroutine(Patrol());
     }
 
     void Update()
     {
-        Patrol();
+        // Any additional update logic can be added here
     }
 
-    void Patrol()
+    IEnumerator Patrol()
     {
-        transform.position = Vector2.MoveTowards(transform.position, patrolPoints.position, moveSpeed * Time.deltaTime);
+        while (true)  // Infinite loop for continuous patrol
+        {
+            foreach (Transform point in patrolPoints)
+            {
+                // Move towards the current patrol point
+                while (transform.position != point.position)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, point.position, moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
 
-    }
-    IEnumerator StartCountdown()
-    {
-        yield return new WaitForSeconds(1f);
+                // Wait for a short duration before moving to the next point
+                yield return new WaitForSeconds(2f);  // Adjust the duration as needed
+            }
+        }
     }
 }
