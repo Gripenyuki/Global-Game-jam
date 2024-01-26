@@ -6,7 +6,12 @@ public class bulletplayer : MonoBehaviour
 {
     private void Start()
     {
-        GameObject foundObject = GameObject.Find("ObjectName");
+        StartCoroutine(bulletlive());
+    }
+    IEnumerator bulletlive()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,10 +31,6 @@ public class bulletplayer : MonoBehaviour
         else if (other.tag == "Player")
         {
             Debug.Log("hitplayer");
-        }
-        else if (other.tag == "G")
-        {
-            Destroy(gameObject);
         }
     }
 
