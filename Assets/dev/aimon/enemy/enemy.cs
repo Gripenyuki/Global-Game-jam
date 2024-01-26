@@ -22,8 +22,7 @@ public class enemy : MonoBehaviour
     public void Getene()
     {
         live = false;
-        enemysr.color = Color.gray;
-        Manager.Die(live, gameObject, eneA, 0.5f, this);
+        Manager.Die(live, gameObject, eneA, 0.5f, this, enemysr);
     }
 
     IEnumerator Patrol()

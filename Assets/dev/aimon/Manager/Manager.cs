@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    public static void Die(bool l, GameObject ch, Animation cha,float t, MonoBehaviour monoBehaviour)
+    public static void Die(bool l, GameObject ch, Animation cha,float t, MonoBehaviour monoBehaviour , SpriteRenderer sr)
     {
         if(l == false) {
             monoBehaviour.StartCoroutine(Die(cha,t,ch)); 
+            sr.color = Color.gray;
         }
 
     }
