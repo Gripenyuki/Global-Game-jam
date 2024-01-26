@@ -32,10 +32,6 @@ public class bulletplayer : MonoBehaviour
         {
             Debug.Log("hitplayer");
         }
-        else if (other.tag == "G")
-        {
-            Destroy(gameObject);
-        }
     }
 
    
