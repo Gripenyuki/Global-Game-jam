@@ -5,6 +5,7 @@ using UnityEngine;
 public class Quest : MonoBehaviour
 {
     [SerializeField] GameObject WallToBreak;
+    [SerializeField] float WallHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,11 @@ public class Quest : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.I))
+        {
+            WallHealth -= 1;
+        }
+
+        if(WallHealth<=0)
         {
             Destroy(WallToBreak.gameObject);
         }
