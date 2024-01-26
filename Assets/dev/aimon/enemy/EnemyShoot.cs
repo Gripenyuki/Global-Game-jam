@@ -15,6 +15,7 @@ public class EnemyShoot : MonoBehaviour
     void Start()
     {
         StartCoroutine(ShootRoutine());
+        enemysr = gameObject.GetComponent<SpriteRenderer>();
     }
     public void Getene1()
     {
@@ -29,7 +30,10 @@ public class EnemyShoot : MonoBehaviour
 
             if (IsPlayerInDetectionRange())
             {
-                Shoot();
+                if(live = true)
+                {
+                    Shoot();
+                }
             }
         }
     }
