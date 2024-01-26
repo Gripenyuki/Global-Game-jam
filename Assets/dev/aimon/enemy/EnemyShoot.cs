@@ -9,12 +9,18 @@ public class EnemyShoot : MonoBehaviour
     private float shootingInterval = 1f;  // Time between shots
     private float projectileSpeed = 5f;  // Speed of the projectile
     private float detectionRange = 10f;   // Range within which the enemy can detect the player
-
+    private bool live;
+    private SpriteRenderer enemysr;
+    private Animation eneA;
     void Start()
     {
         StartCoroutine(ShootRoutine());
     }
-
+    public void Getene1()
+    {
+        live = false;
+        Manager.Die(live, gameObject, eneA, 0.5f, this, enemysr);
+    }
     IEnumerator ShootRoutine()
     {
         while (true)

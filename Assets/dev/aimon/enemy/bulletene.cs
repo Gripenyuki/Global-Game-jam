@@ -10,5 +10,9 @@ public class bulletene : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (other.tag == "Player")
+        {
+
+        }
     }
 }

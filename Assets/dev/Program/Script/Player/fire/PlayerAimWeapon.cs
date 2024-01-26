@@ -7,6 +7,7 @@ public class PlayerAimWeapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
+    public Transform buout;
 
     void Update()
     {
@@ -27,7 +28,7 @@ public class PlayerAimWeapon : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, buout.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(transform.right * bulletForce, ForceMode2D.Impulse);
     }

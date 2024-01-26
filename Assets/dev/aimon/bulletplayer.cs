@@ -15,6 +15,17 @@ public class bulletplayer : MonoBehaviour
         {
             enemy ene = other.GetComponent<enemy>();
             ene.Getene();
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("EnemyShoot"))
+        {
+            EnemyShoot enesh = other.GetComponent<EnemyShoot>();
+            enesh.Getene1();
+            Destroy(gameObject);
+        }
+        else if (other.tag == "Player")
+        {
+            Debug.Log("hitplayer");
         }
         else if (other.tag == "G")
         {
