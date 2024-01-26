@@ -16,48 +16,63 @@ public class DialogueScript : MonoBehaviour
     [SerializeField] private string PlayerName;
     [SerializeField] private string NPCName;
     private int currentIndex = 0;
-    [SerializeField] private bool PlayerFirst;
+    private int previousIndex;
+    [SerializeField] private bool NPCFirst;
+    private bool eKeyPressedLastFrame =false;
 
     // Start is called before the first frame update
     void Start()
     {
-       DialogueBox.SetActive(false);
+            DialogueBox.SetActive(false);
+            PlayerTxt.text = PlayerName;
+            NPCText.text = NPCName; 
     }
 
-    // Update is called once per frame
     void Update()
     {
-     if(Input.GetKeyDown(KeyCode.E))
-     {
-         DialogueBox.SetActive(true);
+        bool eKeyPressed = Input.GetKeyDown(KeyCode.E);
 
-         if(PlayerFirst)
-         {
-             NameBoxL.SetActive(true);
-             NameBoxR.SetActive(false);
-             PlayerFirst = !PlayerFirst;
-         }
-         else
-         {
-             NameBoxR.SetActive(true);
-             NameBoxL.SetActive(false);
-             PlayerFirst = !PlayerFirst;
-         }
+        if (eKeyPressed && !eKeyPressedLastFrame)
+        {
+            DialogueBox.SetActive(true);
 
-         if (currentIndex < message.Length)
-         {
-            TalkText.text = message[currentIndex];
-            currentIndex++;
-         }
-         else
-         {
-            DialogueBox.SetActive(false);
-            currentIndex = 0;
-            if(message.Length % 2 == 0)
+            if (currentIndex < message.Length)
             {
-                PlayerFirst = !PlayerFirst;
+                TalkText.text = message[currentIndex];
+                previousIndex = currentIndex;
+                currentIndex++;
             }
-         }
-     }
+            else
+            {
+                DialogueBox.SetActive(false);
+                currentIndex = 0;
+            }
+
+            if(currentIndex != previousIndex)
+            {
+               NPCFirst = !NPCFirst;
+            }
+
+            if(!DialogueBox.gameObject.activeSelf)
+            {
+                if (message.Length % 2 == 0)
+                {
+                    NPCFirst = !NPCFirst;
+                }
+            }
+        }
+
+        if (NPCFirst)
+        {
+            NameBoxL.SetActive(true);
+            NameBoxR.SetActive(false);
+        }
+        else
+        {
+            NameBoxR.SetActive(true);
+            NameBoxL.SetActive(false);
+        }
+
+        eKeyPressedLastFrame = eKeyPressed;
     }
 }

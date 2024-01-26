@@ -703,7 +703,7 @@ MonoBehaviour:
   - L
   PlayerName: Imon
   NPCName: LOL
-  PlayerFirst: 1
+  NPCFirst: 0
 --- !u!4 &1080688211
 Transform:
   m_ObjectHideFlags: 0
