@@ -16,8 +16,20 @@ public class Manager : MonoBehaviour
     IEnumerator enedie()
     {
         GameOverScreen = GameObject.Find("GameOverScreen");
+        if (GameOverScreen == null )
+        {
+            Debug.Log("GameOverScreen null");
+        }
         DeathCauseObj = GameObject.Find("DeathCause");
+        if (DeathCauseObj == null)
+        {
+            Debug.Log("DeathCauseObj null");
+        }
         DeathCause = DeathCauseObj.GetComponent<TMP_Text>();
+        if (DeathCause == null)
+        {
+            Debug.Log("DeathCause null");
+        }
         yield return new WaitForSeconds(0.1f);
         GameOverScreen.SetActive(false);    
     }
