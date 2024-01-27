@@ -32,7 +32,7 @@ public class bulletplayer : MonoBehaviour
         {
             Debug.Log("hitplayer");
         }
-        else if(other.tag == EneBul)
+        else if(other.tag == "EneBul")
         {
             Destroy(gameObject);
             Destroy(other.gameObject);

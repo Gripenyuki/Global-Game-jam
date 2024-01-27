@@ -9,6 +9,7 @@ TagManager:
   - EnemyShoot
   - EneBul
   - PlayerBul
+  - NPCDetect
   layers:
   - Default
   - TransparentFX
