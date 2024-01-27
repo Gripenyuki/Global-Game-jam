@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using static Unity.VisualScripting.Member;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
@@ -25,7 +26,20 @@ public class PlayerAimWeapon : MonoBehaviour
             Shoot();
         }
     }
-
+    private void FlipSprite()
+    {
+        // Reverse the current horizontal scale
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
+    }
+    private void FlipSpritey()
+    {
+        // Reverse the current horizontal scale
+        Vector3 newScale = transform.localScale;
+        newScale.y *= -1;
+        transform.localScale = newScale;
+    }
     private void Aim()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

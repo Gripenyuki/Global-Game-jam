@@ -23,8 +23,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip FlySound;
     [SerializeField] private AudioClip Landed;
     private SpriteRenderer spriteRenderer;
+    bool hasFlipped = false;
+    GameObject gun;
+    GameObject gun1;
     void Start()
     {
+        gun = GameObject.Find("Gun");
+        gun1 = GameObject.Find("Gun (1)");
         Source = GetComponent<AudioSource>();
         playerA = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,30 +46,47 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(hasFlipped);
         horizontal = Input.GetAxisRaw("Horizontal");
-
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            gun.SetActive(true);
+            gun1.SetActive(false);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            gun.SetActive(false);
+            gun1.SetActive(true);
+        }
         if (isGround)
         {
             // Get the current speed of the character
             float speed = Mathf.Abs(rb.velocity.x);
 
             //Source.clip = WalkSound;
-
-            // Check if the character is moving
+            Reset();
+            // Check if the character is moving0
             if (speed > 0.1f)
             {
-                Reset();
-
+                Debug.Log("????");
                 // Choose the appropriate animation based on the direction
                 if (rb.velocity.x < 0)
                 {
-                    playerA.SetBool("Run right", false);
+                    if (hasFlipped)
+                    {
+                        FlipSprite();
+                        hasFlipped = false; // Reset the flag
+                    }
                     playerA.SetBool("Run left", true);
                 }
                 else
                 {
-                    playerA.SetBool("Run right", true);
-                    playerA.SetBool("Run left", false);
+                    if (!hasFlipped)
+                    {
+                        FlipSprite();
+                        hasFlipped = true; // Reset the flag
+                    }
+                    playerA.SetBool("Run left", true);
                 }
 
                 Source.Play();
@@ -77,24 +99,25 @@ public class PlayerMovement : MonoBehaviour
                 Source.Stop();
             }
         }
-        else if(Input.GetKeyUp(KeyCode.A))
+        else if (Input.GetKeyUp(KeyCode.A))
         {
             Source.Stop();
         }
-        else if(Input.GetKeyUp(KeyCode.D))
+        else if (Input.GetKeyUp(KeyCode.D))
         {
+            
             Source.Stop();
         }
-        else if(!isGround)
+        else if (!isGround)
         {
             Source.clip = null;
         }
 
-        isGrounded = IsGrounded ();
+        isGrounded = IsGrounded();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(isGround)
+            if (isGround)
             {
                 Source.PlayOneShot(JumpSound);
                 rb.bodyType = RigidbodyType2D.Kinematic;
@@ -108,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 rb.velocity = new Vector2(rb.velocity.x, CalculateFlySpeed());
                 Reset();
-                //playerA.SetBool("jump right", true);
+                playerA.SetBool("fly left", true);
             }
         }
         else
@@ -138,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("G"))
+        if (other.gameObject.CompareTag("G"))
         {
             Reset();
             playerA.SetBool("Jd", true);
@@ -149,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("G"))
+        if (other.gameObject.CompareTag("G"))
         {
             isGround = false;
         }
