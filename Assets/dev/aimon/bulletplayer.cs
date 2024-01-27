@@ -46,6 +46,10 @@ public class bulletplayer : MonoBehaviour
         {
             StartCoroutine(enedie(false, " "));
         }
+        else if (other.tag == "bullboss")
+        {
+            StartCoroutine(bossf());
+        }
     }
 
     IEnumerator enedie(bool GOS,string DC)
@@ -65,4 +69,15 @@ public class bulletplayer : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
+<<<<<<< Updated upstream
+=======
+    IEnumerator bossf()
+    {
+        bullpA.Play("hit");
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
+
+
+>>>>>>> Stashed changes
 }

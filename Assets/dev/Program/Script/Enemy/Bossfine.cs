@@ -1,42 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bossfine : MonoBehaviour
 {
-    public float speed = 3f;
+    public float moveSpeed = 3f;
+    public float bulletSpeed = 5f;
     public GameObject bulletPrefab;
-    public Transform firePoint;
+    public Transform bulletSpawnPoint;
 
-    void Update()
+    void Start()
     {
-        // Rotate to face the player
-        RotateTowardsPlayer();
+        StartCoroutine(BossBulletPattern());
+    }
 
-        // Move forward
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        // Shoot
-        if (Input.GetKeyDown(KeyCode.Space))
+    IEnumerator BossBulletPattern()
+    {
+        while (true)
         {
-            Shoot();
+            // Simple bullet pattern
+            for (int i = 0; i < 5; i++)
+            {
+                ShootBullet(i * 20f);
+            }
+
+            yield return new WaitForSeconds(1f);
         }
     }
 
-    void RotateTowardsPlayer()
+    void ShootBullet(float angle)
     {
-        GameObject player = GameObject.FindWithTag("Player");
-
-        if (player != null)
-        {
-            Vector3 direction = player.transform.position - transform.position;
-            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, Time.deltaTime * 5f);
-        }
-    }
-
-    void Shoot()
-    {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.Euler(0f, 0f, angle));
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.velocity = bullet.transform.right * bulletSpeed;
     }
 }
