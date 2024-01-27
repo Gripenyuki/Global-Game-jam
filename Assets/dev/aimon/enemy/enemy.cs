@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class enemy : MonoBehaviour
 {
@@ -48,6 +49,15 @@ public class enemy : MonoBehaviour
         if (live == false)
         {
             rb.isKinematic = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if (collision.tag == "Player")
+        {
+            Manager.GameOverScreen.SetActive(true);
+            Manager.DeathCause.text = "You got smashed to death by a lil cutie turtle";
         }
     }
 }

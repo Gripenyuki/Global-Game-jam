@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class bulletplayer : MonoBehaviour
 {
+    Animator bullpA;
+    Rigidbody2D rb;
     private void Start()
     {
         StartCoroutine(bulletlive());
+        bullpA = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();        
     }
     IEnumerator bulletlive()
     {
@@ -20,26 +24,38 @@ public class bulletplayer : MonoBehaviour
         {
             enemy ene = other.GetComponent<enemy>();
             ene.Getene();
-            Destroy(gameObject);
+            StartCoroutine(enedie(false," "));
         }
         else if (other.CompareTag("EnemyShoot"))
         {
             EnemyShoot enesh = other.GetComponent<EnemyShoot>();
             enesh.Getene1();
-            Destroy(gameObject);
+            StartCoroutine(enedie(false, " "));
         }
         else if (other.tag == "Player")
         {
-            Debug.Log("hitplayer");
+            StartCoroutine(enedie(true,"You'd better not shoot yourself."));
         }
 
         else if(other.tag == "EneBul")
         {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+            StartCoroutine(enedie(false, " "));
         }
-
     }
 
-   
+    IEnumerator enedie(bool GOS,string DC)
+    {
+        bullpA.Play("hit");
+        rb.gravityScale = 0;
+        rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(0.8f);
+        Manager.GameOverScreen.SetActive(GOS);
+        Manager.DeathCause.text = DC;
+        yield return new WaitForSeconds(0.1f);
+        Manager.gameO(GOS);
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+    }
+
+
 }
