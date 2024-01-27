@@ -1,31 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Bulletboss : MonoBehaviour
 {
     public float bulletSpeed = 5f;
     private Transform player;
-    private NavMeshAgent navMeshAgent;
     private Rigidbody2D rb;
-    private Animator bullAnimator;
 
     void Start()
     {
-        GameObject player = GameObject.Find("Player");
+        player = GameObject.Find("Player").transform;
         if (player == null)
         {
             Debug.LogError("Player not found.");
         }
 
         rb = GetComponent<Rigidbody2D>();
-        bullAnimator = GetComponent<Animator>();
-
-        navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
-        navMeshAgent.speed = bulletSpeed;
-        navMeshAgent.autoBraking = false;
-
         StartCoroutine(BulletLive());
     }
 
@@ -33,8 +23,11 @@ public class Bulletboss : MonoBehaviour
     {
         if (player != null)
         {
-            // Set the destination of the NavMeshAgent to the player's position
-            navMeshAgent.SetDestination(player.position);
+            // Calculate the direction towards the player
+            Vector2 direction = (player.position - transform.position).normalized;
+
+            // Move the bullet towards the player
+            rb.velocity = direction * bulletSpeed;
         }
     }
 
@@ -50,13 +43,13 @@ public class Bulletboss : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (other.tag == "Player")
-        {
-            StartCoroutine(BulletEnemy(true, "Why don't you dodge this!!"));
-        }
         else if (other.tag == "PlayerBull")
         {
             Destroy(gameObject);
+        }
+        else if (other.tag == "Player")
+        {
+            StartCoroutine(BulletEnemy(true, "Why don't you dodge this!!"));
         }
     }
 
@@ -64,7 +57,6 @@ public class Bulletboss : MonoBehaviour
     {
         rb.gravityScale = 0;
         rb.velocity = Vector3.zero;
-        bullAnimator.Play("hitplay");
         yield return new WaitForSeconds(0.8f);
         Manager.GameOverScreen.SetActive(gameOverScreen);
         Manager.DeathCause.text = deathCause;
@@ -73,5 +65,5 @@ public class Bulletboss : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
-}
 
+}

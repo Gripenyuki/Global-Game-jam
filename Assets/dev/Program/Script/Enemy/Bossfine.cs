@@ -16,6 +16,7 @@ public class Bossfine : MonoBehaviour
 
     IEnumerator BossBulletPattern()
     {
+        Debug.Log("run boss");
         while (true)
         {
             // Simple bullet pattern
