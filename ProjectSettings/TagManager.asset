@@ -3,27 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< Updated upstream
-  - G
-  - EnemyShoot
-  - Boss
-  - Enemy
-  - EneBul
-  - PlayerBul
-  - FxTemporaire
-  - DeadSoundSource
-=======
-  - PlayerBul
-  - EneBul
-  - FxTemporaire
-  - G
-  - EnemyShoot
-  - Boss
-  - Enemy
-  - Undefined
-  - bullboss
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
