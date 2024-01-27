@@ -25,6 +25,12 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void TestSound()
+    {
+        SoundManager.Instance.PlaySound2D("Test");
+    }
+
     public void UpdateMasterVolume(float volume)
     {
         audioMixer.SetFloat("MasterVolume", volume);
