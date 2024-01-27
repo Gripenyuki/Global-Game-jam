@@ -32,14 +32,13 @@ public class bulletplayer : MonoBehaviour
         {
             Debug.Log("hitplayer");
         }
-<<<<<<< HEAD
+
         else if(other.tag == "EneBul")
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
-=======
->>>>>>> parent of e2e3e7b (BulletDestroyOnCollide)
+
     }
 
    
