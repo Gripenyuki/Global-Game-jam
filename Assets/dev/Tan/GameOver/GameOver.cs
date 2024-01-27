@@ -6,15 +6,26 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    public static void test(Collision2D other)
+    [SerializeField] private GameObject GameOverScreen;
+    [SerializeField] private TextMeshProUGUI DeathCauseTxt;
+    // Start is called before the first frame update
+    void Start()
     {
-        GameObject GameOverScreen = GameObject.Find("GameOverScreen");
-        GameObject GameOvertext = GameObject.Find("DeathCause");
-        TMP_Text DeathCauseTxt = GameOvertext.GetComponent<TMP_Text>();
-        if (other.gameObject.CompareTag("Player"))
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("PlayerBul"))
         {
             GameOverScreen.SetActive(true);
-              DeathCauseTxt.text = "You'd better not shoot yourself.";
+            DeathCauseTxt.text = "You'd better not shoot yourself.";
         }
 
         if(other.gameObject.CompareTag("EneBul"))
@@ -23,13 +34,10 @@ public class GameOver : MonoBehaviour
             DeathCauseTxt.text = "Why don't you dodge this!!";
         }
 
-<<<<<<< Updated upstream
         if(other.gameObject.CompareTag("Enemy"))
         {
             GameOverScreen.SetActive(true);
             DeathCauseTxt.text = "You got smashed to death by a lil cutie turtle";
         }
-=======
->>>>>>> Stashed changes
     }
 }
