@@ -6,6 +6,7 @@ public class bulletene : MonoBehaviour
 {
     Animator bullB;
     Rigidbody2D rb;
+
     private void Start()
     {
         StartCoroutine(bulletlive());
@@ -26,6 +27,7 @@ public class bulletene : MonoBehaviour
         if (other.tag == "Player")
         {
             StartCoroutine(bullene(true, "Why don't you dodge this!!"));
+
         }
     }
     IEnumerator bullene(bool GOS, string DC)
