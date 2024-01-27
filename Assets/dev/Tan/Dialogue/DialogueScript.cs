@@ -12,7 +12,7 @@ public class DialogueScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TalkText;
     [SerializeField] private TextMeshProUGUI PlayerTxt;
     [SerializeField] private TextMeshProUGUI NPCText;
-    [SerializeField] private string[] message;
+    public string[] message;
     [SerializeField] private string PlayerName;
     [SerializeField] private string NPCName;
     private int currentIndex = 0;

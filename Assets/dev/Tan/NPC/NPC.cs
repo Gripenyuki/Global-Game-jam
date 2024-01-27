@@ -5,22 +5,17 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     private DialogueScript dialog;
-    private InRangeCheck InRangeScript;
 
-    [SerializeField] private GameObject detectionRange;
     [SerializeField] private bool inRange;
 
     void Start()
     {
         dialog = GetComponent<DialogueScript>();
-        InRangeScript = FindObjectOfType<InRangeCheck>();
         dialog.enabled = false;
     }
 
     void Update()
     {
-        inRange = InRangeCheck.inRange; 
-
         if(inRange)
         {
             dialog.enabled = true;
@@ -28,6 +23,22 @@ public class NPC : MonoBehaviour
         else
         {
             dialog.enabled = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            inRange = true;
+        }
+    }
+    
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            inRange = false;
         }
     }
 }
