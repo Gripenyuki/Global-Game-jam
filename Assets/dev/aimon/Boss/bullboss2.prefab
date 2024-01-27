@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3461832512641937513}
   - component: {fileID: 4928325416758887747}
   - component: {fileID: 913709828352292667}
-  - component: {fileID: 1701967689462136180}
   - component: {fileID: 2768825774011817907}
   - component: {fileID: 2872017627655165609}
   - component: {fileID: 7465673309684533730}
+  - component: {fileID: 7809340963593449330}
   m_Layer: 0
   m_Name: bullboss2
   m_TagString: bullboss
@@ -102,27 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 3
---- !u!50 &1701967689462136180
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6424325492076081823}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &2768825774011817907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -197,3 +176,24 @@ NavMeshAgent:
   m_BaseOffset: 1.4999999
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!50 &7809340963593449330
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424325492076081823}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -48,7 +48,8 @@ public class bulletplayer : MonoBehaviour
         }
         else if (other.tag == "bullboss")
         {
-            StartCoroutine(bossf());
+            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 

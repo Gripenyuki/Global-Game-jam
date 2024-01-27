@@ -14,6 +14,7 @@ public class EnemyShoot : MonoBehaviour
     private Animation eneA;
     private AudioSource Source;
     [SerializeField] private AudioClip ShotSound;
+    [SerializeField] private AudioClip MD;
     void Start()
     {
         StartCoroutine(ShootRoutine());
@@ -23,6 +24,7 @@ public class EnemyShoot : MonoBehaviour
     public void Getene1()
     {
         live = false;
+        Source.PlayOneShot(MD);
         Manager.Die(live, gameObject, eneA, 0.5f, this, enemysr);
     }
     IEnumerator ShootRoutine()

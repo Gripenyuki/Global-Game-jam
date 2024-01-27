@@ -6,6 +6,8 @@ public class Quest : MonoBehaviour
 {
     [SerializeField] GameObject WallToBreak;
     [SerializeField] float WallHealth;
+    [SerializeField] AudioClip TearDown;
+    private AudioSource source;
     private bool inRange;
     private float WallHeight;
 
@@ -13,6 +15,7 @@ public class Quest : MonoBehaviour
     void Start()
     {
         WallHeight = WallToBreak.transform.localScale.y;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class Quest : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.I))
             {
+                source.PlayOneShot(TearDown);
                 WallHealth -= 1;
             }
         }
