@@ -15,6 +15,7 @@ public class enemy : MonoBehaviour
     public Transform posboom;
     private AudioSource Dead;
     [SerializeField] private AudioClip DS;
+    [SerializeField] private AudioClip MD;
     GameObject AudioSus;
 
     void Start()
@@ -31,6 +32,7 @@ public class enemy : MonoBehaviour
     {
         live = false;
         Instantiate(vfx, posboom);
+        Dead.PlayOneShot(MD);
         Manager.Die(live, gameObject, eneA, 1f, this, enemysr);
     }
 

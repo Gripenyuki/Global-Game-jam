@@ -6,6 +6,9 @@ using UnityEngine.Video;
 
 public class CutScene2 : MonoBehaviour
 {
+    private PlayerMovement playMove;
+    private PlayerAimWeapon aimWep;
+
     [SerializeField] private RawImage Screen;
     [SerializeField] private VideoPlayer Clip;
     // Start is called before the first frame update
@@ -13,13 +16,17 @@ public class CutScene2 : MonoBehaviour
     void Start()
     {
         Screen.enabled = false;
+        playMove = FindObjectOfType<PlayerMovement>();
+        aimWep = FindObjectOfType<PlayerAimWeapon>();
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
             Screen.enabled = true;
+            playMove.enabled = false;
+            aimWep.enabled = false;
             StartCoroutine(PlayVid());
         }
     }
@@ -42,5 +49,7 @@ public class CutScene2 : MonoBehaviour
        }
 
        Screen.enabled = false;
+       playMove.enabled = true;
+       aimWep.enabled = true;
     }
 }

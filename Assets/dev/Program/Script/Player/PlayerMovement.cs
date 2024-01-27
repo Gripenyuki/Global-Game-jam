@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip WalkSound;
     [SerializeField] private AudioClip JumpSound;
     [SerializeField] private AudioClip FlySound;
+    [SerializeField] private AudioClip Landed;
 
     void Start()
     {
@@ -104,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.gameObject.CompareTag("G"))
         {
+            Source.PlayOneShot(Landed);
             isGround = true;
         }
     }
