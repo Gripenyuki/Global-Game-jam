@@ -1898,7 +1898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973b719f5f0915749b7c1c6422d66b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: {fileID: 1261412428}
   inRange: 0
 --- !u!114 &830938758
 MonoBehaviour:
@@ -5326,7 +5325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973b719f5f0915749b7c1c6422d66b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: {fileID: 1043968299}
   inRange: 0
 --- !u!114 &1996975942
 MonoBehaviour:
