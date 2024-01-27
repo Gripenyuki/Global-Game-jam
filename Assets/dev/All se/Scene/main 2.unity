@@ -1384,6 +1384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ene 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1782892266482832135, guid: afa17c683531d56469bab4a68077ef91, type: 3}
+      propertyPath: DS
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b3b59ae9782437419ec38cdd315cb7a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa17c683531d56469bab4a68077ef91, type: 3}
 --- !u!1 &777969031
@@ -2027,9 +2031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787f877d5c990ba42875c20dcfad1a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  moveSpeed: 3
+  bulletSpeed: 5
   bulletPrefab: {fileID: 3534329372592067355, guid: 70cf05a31a7f9dc4da9f8338130c807b, type: 3}
-  firePoint: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
 --- !u!212 &818817981
 SpriteRenderer:
   m_ObjectHideFlags: 0
