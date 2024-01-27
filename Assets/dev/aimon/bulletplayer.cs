@@ -69,10 +69,14 @@ public class bulletplayer : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
+
     IEnumerator bossf()
     {
         bullpA.Play("hit");
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
+
+
+
 }
