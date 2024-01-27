@@ -17,7 +17,7 @@ public class enemy : MonoBehaviour
         StartCoroutine(Patrol());
         rb = GetComponent<Rigidbody2D>();
         eneA = GetComponent<Animation>();
-        enemysr = GetComponent<SpriteRenderer>();   
+        enemysr = GetComponent<SpriteRenderer>();  
     }
 
     public void Getene()

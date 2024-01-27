@@ -5,9 +5,17 @@ using UnityEngine.Diagnostics;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
+    private AudioSource AudioSource;
+
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
     public Transform buout;
+    [SerializeField] private AudioClip GunShotSound;
+
+    void Start()
+    {
+        AudioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -29,6 +37,7 @@ public class PlayerAimWeapon : MonoBehaviour
     private void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, buout.position, transform.rotation);
+        AudioSource.PlayOneShot(GunShotSound);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(transform.right * bulletForce, ForceMode2D.Impulse);
     }
