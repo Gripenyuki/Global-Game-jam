@@ -1,9 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    public static GameObject GameOverScreen;
+    public static GameObject DeathCauseObj;
+    public static TMP_Text DeathCause;
+    private void Start()
+    {
+        StartCoroutine(enedie());
+    }
+    IEnumerator enedie()
+    {
+        GameOverScreen = GameObject.Find("GameOverScreen");
+        DeathCauseObj = GameObject.Find("DeathCause");
+        DeathCause = DeathCauseObj.GetComponent<TMP_Text>();
+        yield return new WaitForSeconds(0.1f);
+        GameOverScreen.SetActive(false);    
+    }
     public static void Die(bool l, GameObject ch, Animation cha,float t, MonoBehaviour monoBehaviour , SpriteRenderer sr)
     {
         if(l == false) {
@@ -17,5 +34,12 @@ public class Manager : MonoBehaviour
         Debug.Log("5555555");
         yield return new WaitForSeconds(t);
         Destroy(j);
+    }
+
+    public static void gameO(bool T) { 
+        if (T == true)
+        {
+            Time.timeScale = 0f;
+        }
     }
 }
