@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.WSA;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,35 +22,51 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip JumpSound;
     [SerializeField] private AudioClip FlySound;
     [SerializeField] private AudioClip Landed;
+    Animator playerA;
 
     void Start()
     {
         Source = GetComponent<AudioSource>();
+        playerA = GetComponent<Animator>();
     }
-    
-    // Update is called once per frame
+
+    private void Reset()
+    {
+        playerA.SetBool("Run left", false);
+        playerA.SetBool("Run right", false);
+        playerA.SetBool("Id left", false);
+        playerA.SetBool("Id right", false);
+    }
     void Update()
-    {   
+    {
         horizontal = Input.GetAxisRaw("Horizontal");
-        
-        if(isGround)
+
+        if (isGround)
         {
-            Source.clip = WalkSound;
-            if(Input.GetKeyDown(KeyCode.A))
+            //Source.clip = WalkSound;
+            if (Input.GetKeyDown(KeyCode.A))
             {
+                Reset();
+                playerA.SetBool("Run left", true);
                 Source.Play();
             }
-            
-            if(Input.GetKeyDown(KeyCode.D))
+
+            if (Input.GetKeyDown(KeyCode.D))
             {
+                Reset();
+                playerA.SetBool("Run right", true);
                 Source.Play();
             }
-            else if(Input.GetKeyUp(KeyCode.A))
+            else if (Input.GetKeyUp(KeyCode.A))
             {
+                Reset();
+                playerA.SetBool("Id left", true);
                 Source.Stop();
             }
-            else if(Input.GetKeyUp(KeyCode.D))
+            else if (Input.GetKeyUp(KeyCode.D))
             {
+                Reset();
+                playerA.SetBool("Id right", true);
                 Source.Stop();
             }
         }
