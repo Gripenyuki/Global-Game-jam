@@ -9,6 +9,7 @@ TagManager:
   - EnemyShoot
   - EneBul
   - PlayerBul
+  - Boss
   layers:
   - Default
   - TransparentFX
