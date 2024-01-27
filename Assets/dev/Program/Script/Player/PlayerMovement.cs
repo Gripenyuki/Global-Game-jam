@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float fly = 5f;
     private bool isGrounded;
     private bool isGround;
-
+    private Animator playerA;
     private AudioSource Source;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip JumpSound;
     [SerializeField] private AudioClip FlySound;
     [SerializeField] private AudioClip Landed;
-    Animator playerA;
 
     void Start()
     {
@@ -45,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //Source.clip = WalkSound;
             if (Input.GetKeyDown(KeyCode.A))
+            if(Input.GetKeyDown(KeyCode.A))
             {
                 Reset();
                 playerA.SetBool("Run left", true);
@@ -72,11 +72,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(Input.GetKeyUp(KeyCode.A))
         {
-             Source.Stop();
+            Source.Stop();
         }
         else if(Input.GetKeyUp(KeyCode.D))
         {
-             Source.Stop();
+
+            Source.Stop();
         }
         else if(!isGround)
         {
