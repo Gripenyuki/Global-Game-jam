@@ -69,8 +69,7 @@ public class bulletplayer : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
-<<<<<<< Updated upstream
-=======
+
     IEnumerator bossf()
     {
         bullpA.Play("hit");
@@ -79,5 +78,5 @@ public class bulletplayer : MonoBehaviour
     }
 
 
->>>>>>> Stashed changes
+
 }
