@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< Updated upstream
+=======
+  - Undefined
+>>>>>>> Stashed changes
   - PlayerBul
   - EneBul
   layers:
