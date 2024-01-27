@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.WSA;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float fly = 5f;
     private bool isGrounded;
     private bool isGround;
-
+    private Animator playerA;
     private AudioSource Source;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -25,41 +26,58 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Source = GetComponent<AudioSource>();
+        playerA = GetComponent<Animator>();
     }
-    
-    // Update is called once per frame
+
+    private void Reset()
+    {
+        playerA.SetBool("Run left", false);
+        playerA.SetBool("Run right", false);
+        playerA.SetBool("Id left", false);
+        playerA.SetBool("Id right", false);
+    }
     void Update()
-    {   
+    {
         horizontal = Input.GetAxisRaw("Horizontal");
-        
-        if(isGround)
+
+        if (isGround)
         {
-            Source.clip = WalkSound;
+            //Source.clip = WalkSound;
+            if (Input.GetKeyDown(KeyCode.A))
             if(Input.GetKeyDown(KeyCode.A))
             {
+                Reset();
+                playerA.SetBool("Run left", true);
                 Source.Play();
             }
-            
-            if(Input.GetKeyDown(KeyCode.D))
+
+            if (Input.GetKeyDown(KeyCode.D))
             {
+                Reset();
+                playerA.SetBool("Run right", true);
                 Source.Play();
             }
-            else if(Input.GetKeyUp(KeyCode.A))
+            else if (Input.GetKeyUp(KeyCode.A))
             {
+                Reset();
+                playerA.SetBool("Id left", true);
                 Source.Stop();
             }
-            else if(Input.GetKeyUp(KeyCode.D))
+            else if (Input.GetKeyUp(KeyCode.D))
             {
+                Reset();
+                playerA.SetBool("Id right", true);
                 Source.Stop();
             }
         }
         else if(Input.GetKeyUp(KeyCode.A))
         {
-             Source.Stop();
+            Source.Stop();
         }
         else if(Input.GetKeyUp(KeyCode.D))
         {
-             Source.Stop();
+
+            Source.Stop();
         }
         else if(!isGround)
         {
