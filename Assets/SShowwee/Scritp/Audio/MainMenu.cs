@@ -12,13 +12,13 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         LoadVolume();
-        MusicManager.Instance.PlayMusic("MainMenu");
+        MusicManager.Instance.PlayMusic("Menu");
     }
 
     public void Play()
     {
-        LevelManager.Instance.LoadScene("Game", "Circlewipe");
-        MusicManager.Instance.PlayMusic("Game");
+        LevelManager.Instance.LoadScene("main 1", "CircleWipe");
+        MusicManager.Instance.PlayMusic("Game1");
     }
 
     public void Quit()
