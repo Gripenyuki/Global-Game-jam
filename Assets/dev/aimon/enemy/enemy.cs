@@ -48,6 +48,8 @@ public class enemy : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, point.position, moveSpeed * Time.deltaTime);
                     yield return null;
                 }
+                
+                enemysr.flipX = !enemysr.flipX;
 
                 // Wait for a short duration before moving to the next point
                 yield return new WaitForSeconds(2f);  // Adjust the duration as needed
