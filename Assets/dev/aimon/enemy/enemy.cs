@@ -11,19 +11,22 @@ public class enemy : MonoBehaviour
     bool live = true;
     private Animation eneA;
     private SpriteRenderer enemysr;
+    public GameObject vfx;
+    public Transform posboom;
 
     void Start()
     {
         StartCoroutine(Patrol());
         rb = GetComponent<Rigidbody2D>();
         eneA = GetComponent<Animation>();
-        enemysr = GetComponent<SpriteRenderer>();  
+        enemysr = GetComponent<SpriteRenderer>();
     }
 
     public void Getene()
     {
         live = false;
-        Manager.Die(live, gameObject, eneA, 0.5f, this, enemysr);
+        Instantiate(vfx, posboom);
+        Manager.Die(live, gameObject, eneA, 1f, this, enemysr);
     }
 
     IEnumerator Patrol()
