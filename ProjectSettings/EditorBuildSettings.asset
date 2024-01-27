@@ -14,10 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/dev/All se/Scene/Credit.unity
     guid: a15fce308c8da2e459858ca1d846b647
-  - enabled: 1
+  - enabled: 0
     path: Assets/dev/All se/Scene/main.unity
     guid: f969302b853e1b744af86c53684cc382
-  - enabled: 1
+  - enabled: 0
     path: Assets/dev/All se/Scene/Setting.unity
     guid: b24acaeaa0b96504ab8e445157c171a1
+  - enabled: 1
+    path: Assets/dev/All se/Scene/main 2.unity
+    guid: b1261efb4265f72459c2986368f4ca33
   m_configObjects: {}
