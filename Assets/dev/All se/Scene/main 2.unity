@@ -1167,6 +1167,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1782892266482832135, guid: afa17c683531d56469bab4a68077ef91, type: 3}
+      propertyPath: DS
+      value: 
+      objectReference: {fileID: 8300000, guid: 40b4e071ce37d414d9d07a7a89624fa7, type: 3}
     m_RemovedComponents:
     - {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afa17c683531d56469bab4a68077ef91, type: 3}
@@ -1380,28 +1384,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ene 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b4681d2c9c6aaa844b90d102ce71ceb8, type: 3}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782892266482832128, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.32
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa17c683531d56469bab4a68077ef91, type: 3}
 --- !u!1 &777969031
 GameObject:
@@ -1512,7 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1526888641}
-  projectilePrefab: {fileID: 7795249446028536657, guid: bcb5c10e58566c946892206460eab3fe, type: 3}
+  projectilePrefab: {fileID: 1700081104883697235, guid: 0b6db36d171cf53419e48b09a37ab36e, type: 3}
   ShotSound: {fileID: 8300000, guid: 31bf0c3915e682146a61ea5c6c890044, type: 3}
 --- !u!61 &778788838
 BoxCollider2D:
@@ -2635,7 +2618,7 @@ GameObject:
   - component: {fileID: 1036722972}
   - component: {fileID: 1036722971}
   m_Layer: 0
-  m_Name: DeadSouundSource
+  m_Name: DeadSoundSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6157,24 +6140,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ene 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b4681d2c9c6aaa844b90d102ce71ceb8, type: 3}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1782892266482831610, guid: afa17c683531d56469bab4a68077ef91, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa17c683531d56469bab4a68077ef91, type: 3}
 --- !u!1001 &6917312491051608525
 PrefabInstance:
