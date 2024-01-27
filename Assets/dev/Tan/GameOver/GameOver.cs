@@ -33,5 +33,11 @@ public class GameOver : MonoBehaviour
             GameOverScreen.SetActive(true);
             DeathCauseTxt.text = "Why don't you dodge this!!";
         }
+
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            GameOverScreen.SetActive(true);
+            DeathCauseTxt.text = "You got smashed to death by a lil cutie turtle";
+        }
     }
 }
