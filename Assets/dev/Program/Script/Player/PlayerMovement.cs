@@ -22,11 +22,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip JumpSound;
     [SerializeField] private AudioClip FlySound;
     [SerializeField] private AudioClip Landed;
-
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         Source = GetComponent<AudioSource>();
         playerA = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Reset()
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         playerA.SetBool("Run right", false);
         playerA.SetBool("Id left", false);
         playerA.SetBool("Id right", false);
+        playerA.SetBool("jump right", false);
+        playerA.SetBool("Jd", false);
     }
     void Update()
     {
@@ -42,31 +45,35 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGround)
         {
-            //Source.clip = WalkSound;
-            if (Input.GetKeyDown(KeyCode.A))
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                Reset();
-                playerA.SetBool("Run left", true);
-                Source.Play();
-            }
+            // Get the current speed of the character
+            float speed = Mathf.Abs(rb.velocity.x);
 
-            if (Input.GetKeyDown(KeyCode.D))
+            //Source.clip = WalkSound;
+
+            // Check if the character is moving
+            if (speed > 0.1f)
             {
                 Reset();
-                playerA.SetBool("Run right", true);
+
+                // Choose the appropriate animation based on the direction
+                if (rb.velocity.x < 0)
+                {
+                    playerA.SetBool("Run right", false);
+                    playerA.SetBool("Run left", true);
+                }
+                else
+                {
+                    playerA.SetBool("Run right", true);
+                    playerA.SetBool("Run left", false);
+                }
+
                 Source.Play();
             }
-            else if (Input.GetKeyUp(KeyCode.A))
+            else
             {
+                // No movement, reset to idle
                 Reset();
-                playerA.SetBool("Id left", true);
-                Source.Stop();
-            }
-            else if (Input.GetKeyUp(KeyCode.D))
-            {
-                Reset();
-                playerA.SetBool("Id right", true);
+                playerA.SetBool("Id left", true);  // Or use "Id right" based on your setup
                 Source.Stop();
             }
         }
@@ -76,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(Input.GetKeyUp(KeyCode.D))
         {
-
             Source.Stop();
         }
         else if(!isGround)
@@ -93,18 +99,29 @@ public class PlayerMovement : MonoBehaviour
                 Source.PlayOneShot(JumpSound);
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 rb.velocity = new Vector2(rb.velocity.x, CalculateFlySpeed());
+                Reset();
+                playerA.SetBool("jump right", true);
             }
             else
             {
                 Source.PlayOneShot(FlySound);
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 rb.velocity = new Vector2(rb.velocity.x, CalculateFlySpeed());
+                Reset();
+                //playerA.SetBool("jump right", true);
             }
         }
         else
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
+    }
+    private void FlipSprite()
+    {
+        // Reverse the current horizontal scale
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
     }
     private void FixedUpdate()
     {
@@ -123,6 +140,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.gameObject.CompareTag("G"))
         {
+            Reset();
+            playerA.SetBool("Jd", true);
             Source.PlayOneShot(Landed);
             isGround = true;
         }
