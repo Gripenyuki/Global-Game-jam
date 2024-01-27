@@ -357,6 +357,7 @@ MonoBehaviour:
   vfx: {fileID: 4603043970874746780, guid: 3ccabe1e9e93d3a47a519447643bc9d5, type: 3}
   posboom: {fileID: 2543709263650193968}
   DS: {fileID: 8300000, guid: 40b4e071ce37d414d9d07a7a89624fa7, type: 3}
+  MD: {fileID: 8300000, guid: 5c3ed5359e2dc5041b1242399cec574d, type: 3}
 --- !u!61 &1782892266482831611
 BoxCollider2D:
   m_ObjectHideFlags: 0
