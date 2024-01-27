@@ -19,6 +19,8 @@ public class DialogueScript : MonoBehaviour
     private int previousIndex;
     [SerializeField] private bool NPCFirst;
     private bool eKeyPressedLastFrame =false;
+    [SerializeField] private AudioClip[] Conversation;
+    private AudioSource conver;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class DialogueScript : MonoBehaviour
             DialogueBox.SetActive(false);
             PlayerTxt.text = PlayerName;
             NPCText.text = NPCName; 
+            conver = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -46,6 +49,11 @@ public class DialogueScript : MonoBehaviour
             {
                 DialogueBox.SetActive(false);
                 currentIndex = 0;
+            }
+            
+            if(currentIndex < Conversation.Length)
+            {
+                conver.PlayOneShot(Conversation[currentIndex]);
             }
 
             if(currentIndex != previousIndex)
