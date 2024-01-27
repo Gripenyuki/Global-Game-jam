@@ -3,17 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - G
-  - EnemyShoot
-  - EneBul
-  - PlayerBul
-<<<<<<< HEAD
-  - NPCDetect
-=======
-  - Boss
->>>>>>> 17746f5e9c05dc5a045b5e8145923ebf979f8f7d
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -21,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Bullet
+  - 
+  - 
   - 
   - 
   - 

@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float fly = 5f;
     private bool isGrounded;
+    private bool isGround;
 
     private AudioSource Source;
     [SerializeField] private Rigidbody2D rb;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioClip WalkSound;
     [SerializeField] private AudioClip JumpSound;
+    [SerializeField] private AudioClip FlySound;
 
     void Start()
     {
@@ -29,7 +31,15 @@ public class PlayerMovement : MonoBehaviour
     {   
         horizontal = Input.GetAxisRaw("Horizontal");
         
+        if(isGround)
+        {
+            Source.clip = WalkSound;
             if(Input.GetKeyDown(KeyCode.A))
+            {
+                Source.Play();
+            }
+            
+            if(Input.GetKeyDown(KeyCode.D))
             {
                 Source.Play();
             }
@@ -37,22 +47,40 @@ public class PlayerMovement : MonoBehaviour
             {
                 Source.Stop();
             }
-            if(Input.GetKeyDown(KeyCode.D))
-            {
-                Source.Play();
-            }
             else if(Input.GetKeyUp(KeyCode.D))
             {
                 Source.Stop();
-            }        
+            }
+        }
+        else if(Input.GetKeyUp(KeyCode.A))
+        {
+             Source.Stop();
+        }
+        else if(Input.GetKeyUp(KeyCode.D))
+        {
+             Source.Stop();
+        }
+        else if(!isGround)
+        {
+            Source.clip = null;
+        }
 
         isGrounded = IsGrounded ();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Source.PlayOneShot(JumpSound);
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            rb.velocity = new Vector2(rb.velocity.x, CalculateFlySpeed());
+            if(isGround)
+            {
+                Source.PlayOneShot(JumpSound);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.velocity = new Vector2(rb.velocity.x, CalculateFlySpeed());
+            }
+            else
+            {
+                Source.PlayOneShot(FlySound);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.velocity = new Vector2(rb.velocity.x, CalculateFlySpeed());
+            }
         }
         else
         {
@@ -70,5 +98,21 @@ public class PlayerMovement : MonoBehaviour
     private float CalculateFlySpeed()
     {
         return fly;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("G"))
+        {
+            isGround = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("G"))
+        {
+            isGround = false;
+        }
     }
 }

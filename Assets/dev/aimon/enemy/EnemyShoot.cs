@@ -12,10 +12,13 @@ public class EnemyShoot : MonoBehaviour
     private bool live;
     private SpriteRenderer enemysr;
     private Animation eneA;
+    private AudioSource Source;
+    [SerializeField] private AudioClip ShotSound;
     void Start()
     {
         StartCoroutine(ShootRoutine());
         enemysr = gameObject.GetComponent<SpriteRenderer>();
+        Source = GetComponent<AudioSource>();
     }
     public void Getene1()
     {
@@ -55,6 +58,7 @@ public class EnemyShoot : MonoBehaviour
         {
             Vector2 direction = (target.position - transform.position).normalized;
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Source.PlayOneShot(ShotSound);
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
             projectileRb.velocity = direction * projectileSpeed;
         }
