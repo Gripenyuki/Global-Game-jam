@@ -4,12 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< Updated upstream
-=======
-  - Undefined
->>>>>>> Stashed changes
-  - PlayerBul
+  - G
+  - EnemyShoot
+  - Boss
+  - Enemy
   - EneBul
+  - PlayerBul
+  - FxTemporaire
+  - DeadSoundSource
   layers:
   - Default
   - TransparentFX

@@ -6,11 +6,16 @@ public class bulletplayer : MonoBehaviour
 {
     Animator bullpA;
     Rigidbody2D rb;
+    public AudioSource Dead;
+    GameObject deadSoundSourceObject;
+    [SerializeField] private AudioClip DS;
     private void Start()
     {
         StartCoroutine(bulletlive());
         bullpA = gameObject.GetComponent<Animator>();
-        rb = gameObject.GetComponent<Rigidbody2D>();        
+        rb = gameObject.GetComponent<Rigidbody2D>();  
+        deadSoundSourceObject = GameObject.Find("DeadSoundSource");
+        Dead = deadSoundSourceObject.GetComponent<AudioSource>();
     }
     IEnumerator bulletlive()
     {
@@ -51,11 +56,13 @@ public class bulletplayer : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         Manager.GameOverScreen.SetActive(GOS);
         Manager.DeathCause.text = DC;
+        if(GOS)
+        {
+            Dead.PlayOneShot(DS);
+        }
         yield return new WaitForSeconds(0.1f);
         Manager.gameO(GOS);
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
-
-
 }

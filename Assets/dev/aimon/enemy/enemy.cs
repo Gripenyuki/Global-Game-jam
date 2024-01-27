@@ -13,6 +13,9 @@ public class enemy : MonoBehaviour
     private SpriteRenderer enemysr;
     public GameObject vfx;
     public Transform posboom;
+    private AudioSource Dead;
+    [SerializeField] private AudioClip DS;
+    GameObject AudioSus;
 
     void Start()
     {
@@ -20,6 +23,8 @@ public class enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         eneA = GetComponent<Animation>();
         enemysr = GetComponent<SpriteRenderer>();
+        AudioSus = GameObject.Find("DeadSoundSource");
+        Dead = AudioSus.GetComponent<AudioSource>();
     }
 
     public void Getene()
@@ -59,7 +64,9 @@ public class enemy : MonoBehaviour
     {
        if (collision.tag == "Player")
         {
+            Time.timeScale = 0f;
             Manager.GameOverScreen.SetActive(true);
+            Dead.PlayOneShot(DS);
             Manager.DeathCause.text = "You got smashed to death by a lil cutie turtle";
         }
     }
