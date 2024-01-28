@@ -14,16 +14,13 @@ public class Boss2 : MonoBehaviour
         {
             end.SetActive(true);
             player.SetActive(false);
+            StartCoroutine(nent());
         }
     }
 
     IEnumerator nent()
     {
-        yield return new WaitForSeconds(9.4f);
-        LoadSceneByNumber(2);
-    }
-    public void LoadSceneByNumber(int sceneNumber)
-    {
-        SceneManager.LoadScene(sceneNumber);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(4);
     }
 }
