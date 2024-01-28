@@ -21,6 +21,10 @@ public class DialogueScript : MonoBehaviour
     private bool eKeyPressedLastFrame =false;
     [SerializeField] private AudioClip[] Conversation;
     private AudioSource conver;
+    [SerializeField] private Image Player;
+    [SerializeField] private Image NPC;
+    [SerializeField] private GameObject npcOb;
+    [SerializeField] private Sprite Imon;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,8 @@ public class DialogueScript : MonoBehaviour
             PlayerTxt.text = PlayerName;
             NPCText.text = NPCName; 
             conver = GetComponent<AudioSource>();
+            NPC.sprite = npcOb.GetComponent<SpriteRenderer>().sprite;
+            Player.sprite = Imon;
     }
 
     void Update()
