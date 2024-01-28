@@ -21,7 +21,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
         MusicManager.Instance.PlayMusic("Game1");
     }
-
+    public void credit()
+    {
+        SceneManager.LoadScene(4);
+        MusicManager.Instance.PlayMusic("Game1");
+    }
     public void Quit()
     {
         Application.Quit();
