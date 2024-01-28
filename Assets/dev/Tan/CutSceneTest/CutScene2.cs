@@ -11,6 +11,7 @@ public class CutScene2 : MonoBehaviour
 
     [SerializeField] private RawImage Screen;
     [SerializeField] private VideoPlayer Clip;
+    [SerializeField] private AudioSource Sound;
     // Start is called before the first frame update
     
     void Start()
@@ -34,6 +35,7 @@ public class CutScene2 : MonoBehaviour
     IEnumerator PlayVid()
     {
         Clip.Prepare();
+        Sound.Play();
         WaitForSeconds waitForSeconds = new WaitForSeconds(1.0f);
         while(!Clip.isPrepared)
         {
