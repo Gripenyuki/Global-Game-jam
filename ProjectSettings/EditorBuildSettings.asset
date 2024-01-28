@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/MAIN.unity
     guid: 68000c0270bd43c4eb5798c1e3e4b09b
   - enabled: 1
-    path: Assets/dev/Program/boss2.unity
-    guid: b43f01c3ba6cb9147825a14ce598f209
+    path: Assets/dev/Program/test.unity
+    guid: 70b3c73afb3fd5745ada799afa9f2cb2
   m_configObjects: {}
