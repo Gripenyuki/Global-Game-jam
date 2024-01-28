@@ -19,19 +19,11 @@ public class CutScene2 : MonoBehaviour
         Screen.enabled = false;
         playMove = FindObjectOfType<PlayerMovement>();
         aimWep = FindObjectOfType<PlayerAimWeapon>();
+        Screen.enabled = true;
+        playMove.enabled = false;
+        aimWep.enabled = false;
+        StartCoroutine(PlayVid());
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            Screen.enabled = true;
-            playMove.enabled = false;
-            aimWep.enabled = false;
-            StartCoroutine(PlayVid());
-        }
-    }
-
     IEnumerator PlayVid()
     {
         Clip.Prepare();
