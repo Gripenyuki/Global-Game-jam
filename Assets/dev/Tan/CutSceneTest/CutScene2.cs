@@ -28,21 +28,22 @@ public class CutScene2 : MonoBehaviour
     {
         Clip.Prepare();
         Sound.Play();
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1.0f);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(3.0f);
         while(!Clip.isPrepared)
         {
             yield return waitForSeconds;
             break;
         }
        Screen.texture = Clip.texture;
-       Clip.Play();
+
+        Clip.Play();
 
        while(Clip.isPlaying)
        {
            yield return null;
        }
 
-       Screen.enabled = false;
+        Screen.enabled = false;
        playMove.enabled = true;
        aimWep.enabled = true;
     }
