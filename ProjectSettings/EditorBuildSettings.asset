@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SShowwee/Map 1.unity
-    guid: adebf012f37148e47ba3c3d7e3f770b2
+    path: Assets/SShowwee/MainMenu.unity
+    guid: fbbb4aa591b4b6044b0ca5a3aef048b5
   - enabled: 1
     path: Assets/SShowwee/Map2.unity
     guid: e06edf592baa99b4a8e8d859c27c409c
