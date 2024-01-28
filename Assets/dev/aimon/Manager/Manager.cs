@@ -30,7 +30,7 @@ public class Manager : MonoBehaviour
         {
             Debug.Log("DeathCause null");
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         GameOverScreen.SetActive(false);    
     }
     public static void Die(bool l, GameObject ch, Animator cha,float t, MonoBehaviour monoBehaviour , SpriteRenderer sr)

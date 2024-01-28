@@ -17,6 +17,7 @@ public class Boss : MonoBehaviour
         if (other.tag == "PlayerBul")
         {
             boss.SetBool("die", true);
+            StartCoroutine(nent());
             GameObject cam = GameObject.Find("Main Camera");
             cam.SetActive(false);
             camB.SetActive(true);
@@ -28,10 +29,6 @@ public class Boss : MonoBehaviour
     IEnumerator nent()
     {
         yield return new WaitForSeconds(9.4f);
-        LoadSceneByNumber(2);
-    }
-    public void LoadSceneByNumber(int sceneNumber)
-    {
-        SceneManager.LoadScene(sceneNumber);
+        SceneManager.LoadScene(3);
     }
 }
