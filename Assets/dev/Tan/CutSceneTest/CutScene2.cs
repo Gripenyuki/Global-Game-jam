@@ -36,6 +36,9 @@ public class CutScene2 : MonoBehaviour
         }
        Screen.texture = Clip.texture;
 
+        float videoAspect = (float)Clip.width / Clip.height;
+        Screen.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.rectTransform.rect.height * videoAspect);
+
         Clip.Play();
 
        while(Clip.isPlaying)
