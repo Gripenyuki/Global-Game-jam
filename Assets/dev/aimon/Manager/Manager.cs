@@ -33,7 +33,7 @@ public class Manager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         GameOverScreen.SetActive(false);    
     }
-    public static void Die(bool l, GameObject ch, Animation cha,float t, MonoBehaviour monoBehaviour , SpriteRenderer sr)
+    public static void Die(bool l, GameObject ch, Animator cha,float t, MonoBehaviour monoBehaviour , SpriteRenderer sr)
     {
         if(l == false) {
             monoBehaviour.StartCoroutine(Die(cha,t,ch)); 
@@ -41,7 +41,7 @@ public class Manager : MonoBehaviour
         }
 
     }
-    public static IEnumerator Die(Animation ch, float t, GameObject j)
+    public static IEnumerator Die(Animator ch, float t, GameObject j)
     {
         Debug.Log("5555555");
         yield return new WaitForSeconds(t);

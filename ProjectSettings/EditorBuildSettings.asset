@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/dev/Program/RealProgram.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/SShowwee/Map 1.unity
+    guid: adebf012f37148e47ba3c3d7e3f770b2
   - enabled: 1
-    path: Assets/dev/All se/Scene/MainMenu.unity
-    guid: be9043a3c2d5eb14fb1adad4d2c41de1
+    path: Assets/SShowwee/Map2.unity
+    guid: e06edf592baa99b4a8e8d859c27c409c
   - enabled: 1
-    path: Assets/dev/All se/Scene/Credit.unity
-    guid: a15fce308c8da2e459858ca1d846b647
+    path: Assets/MAIN.unity
+    guid: 68000c0270bd43c4eb5798c1e3e4b09b
   - enabled: 1
-    path: Assets/dev/All se/Scene/main 1.unity
-    guid: 9bd702871968f5b48a7504ddc4f6b96c
+    path: Assets/dev/Program/boss2.unity
+    guid: b43f01c3ba6cb9147825a14ce598f209
   m_configObjects: {}

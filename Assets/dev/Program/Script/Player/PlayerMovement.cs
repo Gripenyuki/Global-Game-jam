@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         playerA.SetBool("Id right", false);
         playerA.SetBool("jump right", false);
         playerA.SetBool("Jd", false);
+        playerA.SetBool("fly left", false);
     }
     void Update()
     {

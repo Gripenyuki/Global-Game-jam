@@ -11,7 +11,7 @@ public class EnemyShoot : MonoBehaviour
     private float detectionRange = 10f;   // Range within which the enemy can detect the player
     private bool live;
     private SpriteRenderer enemysr;
-    private Animation eneA;
+    private Animator eneA;
     private AudioSource Source;
     [SerializeField] private AudioClip ShotSound;
     [SerializeField] private AudioClip MD;

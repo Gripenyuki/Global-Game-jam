@@ -1,27 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss : MonoBehaviour
+public class Boss2 : MonoBehaviour
 {
-    public GameObject camB;
-    public Animator boss;
     public GameObject player;
-    private void Start()
-    {
-        boss = GetComponent<Animator>();
-    }
+    public GameObject end;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "PlayerBul")
         {
-            boss.SetBool("die", true);
-            GameObject cam = GameObject.Find("Main Camera");
-            cam.SetActive(false);
-            camB.SetActive(true);
+            end.SetActive(true);
             player.SetActive(false);
-            Destroy(other.gameObject);
         }
     }
 

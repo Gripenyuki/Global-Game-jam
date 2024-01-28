@@ -9,7 +9,7 @@ public class enemy : MonoBehaviour
     private bool walk;
     private Rigidbody2D rb;
     bool live = true;
-    private Animation eneA;
+    private Animator eneA;
     private SpriteRenderer enemysr;
     public GameObject vfx;
     public Transform posboom;
@@ -22,7 +22,7 @@ public class enemy : MonoBehaviour
     {
         StartCoroutine(Patrol());
         rb = GetComponent<Rigidbody2D>();
-        eneA = GetComponent<Animation>();
+        eneA = GetComponent<Animator>();
         enemysr = GetComponent<SpriteRenderer>();
         AudioSus = GameObject.Find("DeadSoundSource");
         Dead = AudioSus.GetComponent<AudioSource>();
@@ -48,30 +48,12 @@ public class enemy : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, point.position, moveSpeed * Time.deltaTime);
                     yield return null;
                 }
-                
+
                 enemysr.flipX = !enemysr.flipX;
 
                 // Wait for a short duration before moving to the next point
                 yield return new WaitForSeconds(2f);  // Adjust the duration as needed
             }
-        }
-    }
-    private void Update()
-    {
-        if (live == false)
-        {
-            rb.isKinematic = true;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       if (collision.tag == "Player")
-        {
-            Time.timeScale = 0f;
-            Manager.GameOverScreen.SetActive(true);
-            Dead.PlayOneShot(DS);
-            Manager.DeathCause.text = "You got smashed to death by a lil cutie turtle";
         }
     }
 }
