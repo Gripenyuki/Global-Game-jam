@@ -16,12 +16,12 @@ public class CutScene2 : MonoBehaviour
     
     void Start()
     {
-        Screen.enabled = false;
         playMove = FindObjectOfType<PlayerMovement>();
         aimWep = FindObjectOfType<PlayerAimWeapon>();
-        Screen.enabled = true;
         playMove.enabled = false;
+        Screen.enabled = true;
         aimWep.enabled = false;
+        Time.timeScale = 0;
         StartCoroutine(PlayVid());
     }
     IEnumerator PlayVid()
@@ -49,5 +49,6 @@ public class CutScene2 : MonoBehaviour
         Screen.enabled = false;
        playMove.enabled = true;
        aimWep.enabled = true;
+        Time.timeScale = 1;
     }
 }
