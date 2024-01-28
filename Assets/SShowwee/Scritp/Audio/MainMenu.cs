@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -17,7 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        LevelManager.Instance.LoadScene("Map2", "CircleWipe");
+        SceneManager.LoadScene(1);
         MusicManager.Instance.PlayMusic("Game1");
     }
 
